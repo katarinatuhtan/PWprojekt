@@ -75,18 +75,18 @@
             margin: 50px;
             border-bottom: 3px solid #5C5470;
         }
-        .volonters-container {
+
+        .projekti-container {
             display: flex;
             justify-content:center;
             flex-wrap: wrap; 
         }
-
-        .volonter {
+        .projekti {
             border: 1px solid #B9B4C7;
             margin: 10px;
             padding: 10px;
             background-color: #ffffff;
-            width: 300px; 
+            width: 1000px; 
             font-size: 20px;
         }
 
@@ -109,19 +109,21 @@
 
     <div>
         <p> <br>
-            Mi smo strastvena zajednica posvećena promicanju volontarizma i pozitivnih društvenih promjena. <br>
-            Naš tim čine ljudi različitih pozadina i vještina, ali nas povezuje ista želja za doprinosom zajednici i širenjem pozitivnog utjecaja. <br>
-            Svi smo ovdje jer vjerujemo da volontiranje ima moć stvaranja trajnih promjena, a zajedno gradimo mostove nade i zajedništva. <br>
+            Naš cilj je potaknuti ljude da se angažiraju, podijele svoje talente i resurse te doprinesu pozitivnim promjenama u svojoj zajednici. <br>
+            Svi su pozvani da se pridruže našim projektima, bilo kao volonteri, donatori ili partneri, jer vjerujemo da zajedno možemo stvoriti snažniju, podržavajuću i ljubaznu zajednicu. <br>
+            Pregledajte naše projekte i pridružite nam se u ispunjavanju našeg cilja!. <br>
              </p>
         {% block content %}
         <br>
-        <h2> Naši volonteri: </h2>
-        <div class="volonters-container">
-            {% for volonter in volonters %}
-            <div class="volonter">
-                <h4>{{ volonter.ime }}, {{ volonter.godine }}</h4>
-                <p>Projekt: {{ volonter.projekt }}</p>
-            </div>
+        <h2> Projekti </h2>
+        <div class="projekti-container">
+            {% for projekt in projekts %}
+            <div class="projekti">
+                <h4>{{ projekt.naziv }}</h4>
+                <p>Datum početka: {{ projekt.datum_projekta }} <br>
+                Mjesto: {{ projekt.mjesto }} <br>
+                Opis: {{ projekt.opis }} </p>
+                </div>
             {% endfor %}
         </div>
         {% endblock %}

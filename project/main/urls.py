@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.LandingPageView.as_view(), name='landing'),
     # path('add/', views.IceCreamCreateView.as_view(), name='add'),
     path('about/', views.VolonterListView.as_view(), name='about'),
+    path('projects/', views.ProjektiListView.as_view(), name='projects'),
     # path('update/', views.IceCreamUpdateView.as_view(), name='update'),
     # path('delete/', views.IceCreamDeleteView.as_view(), name='delete'),
 ]

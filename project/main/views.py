@@ -11,3 +11,8 @@ class VolonterListView(ListView):
     model = Volonter
     template_name = 'o_nama.html'
     context_object_name = 'volonters'
+
+class ProjektiListView(ListView):
+    model = Projekt
+    template_name = 'projekti.html'
+    context_object_name = 'projekts'
