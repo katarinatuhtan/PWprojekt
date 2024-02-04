@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt PW</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #faf4ec;
+        }
+
+        h1 {
+            background-color: #5C5470;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: 0;
+            font-size: 50px;
+        }
+
+        #sidebar {
+            width: 20%;
+            float: left;
+            background-color: #B9B4C7;
+            height: 100vh;
+        }
+
+        #sidebar a:hover {
+            color: #007bff;
+        }
+
+        .content {
+            width: 80%;
+            float: left;
+            padding: 20px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #007bff;
+        }
+
+        a:visited {
+            color: transparent;
+        }
+
+        h2 {
+            color: black;
+            text-align: center;
+            padding: 10px;
+            margin: 0;
+            font-size: 30px;
+        }
+
+        p {
+            color: black;
+            text-align: center;
+            padding: 10px;
+            margin-left: 20px;
+            font-size: 20px;
+
+        }
+
+        .sidebar-item {
+            padding: 10px;
+            text-align-last: center;
+            font-size: 30px;
+            margin: 50px;
+            border-bottom: 3px solid #5C5470;
+        }
+        .volonters-container {
+            display: flex;
+            justify-content:center;
+            flex-wrap: wrap; 
+        }
+
+        .volonter {
+            border: 1px solid #B9B4C7;
+            margin: 10px;
+            padding: 10px;
+            background-color: #ffffff;
+            width: 300px; 
+            font-size: 20px;
+        }
+
+        h4 {
+            color: #5C5470;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1><a href="/">VolonteRI</a></h1>
+    <div id="sidebar">
+        <div class="sidebar-item"><a href="/admin">Admin login</a></div>
+        <div class="sidebar-item"><a href="/about">O nama</a></div>
+        <div class="sidebar-item"><a href="#">Projekti</a></div>
+        <div class="sidebar-item"><a href="#">Pridruži se</a></div>
+        <div class="sidebar-item"><a href="#">Kontakt</a></div>
+    </div>
+
+    <div>
+        <p> <br>
+            Mi smo strastvena zajednica posvećena promicanju volontarizma i pozitivnih društvenih promjena. <br>
+            Naš tim čine ljudi različitih pozadina i vještina, ali nas povezuje ista želja za doprinosom zajednici i širenjem pozitivnog utjecaja. <br>
+            Svi smo ovdje jer vjerujemo da volontiranje ima moć stvaranja trajnih promjena, a zajedno gradimo mostove nade i zajedništva. <br>
+             </p>
+        {% block content %}
+        <br>
+        <h2> Naši volonteri: </h2>
+        <div class="volonters-container">
+            {% for volonter in volonters %}
+            <div class="volonter">
+                <h4>{{ volonter.ime }}, {{ volonter.godine }}</h4>
+                <p>Projekt: {{ volonter.projekt }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endblock %}
+    </div>
+</body>
+
+</html>
+
+
+

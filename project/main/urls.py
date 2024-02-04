@@ -6,7 +6,7 @@ app_name = 'main'
 urlpatterns = [
     path('', views.LandingPageView.as_view(), name='landing'),
     # path('add/', views.IceCreamCreateView.as_view(), name='add'),
-    # path('list/', views.IceCreamListView.as_view(), name='list'),
+    path('about/', views.VolonterListView.as_view(), name='about'),
     # path('update/', views.IceCreamUpdateView.as_view(), name='update'),
     # path('delete/', views.IceCreamDeleteView.as_view(), name='delete'),
 ]

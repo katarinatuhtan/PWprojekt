@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volunteer System</title>
+    <title>Projekt PW</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,6 +19,7 @@
             text-align: center;
             padding: 10px;
             margin: 0;
+            font-size: 50px;
         }
 
         #sidebar {
@@ -45,41 +46,69 @@
         a:hover {
             color: #007bff;
         }
-        a:visited{
+
+        a:visited {
             color: transparent;
         }
 
         h2 {
             color: black;
-            text-align:center;
+            text-align: center;
             padding: 10px;
-            margin: 0;
+            margin: 20px;
         }
 
         p {
             color: black;
-            text-align:center;
+            text-align: center;
             padding: 10px;
             margin-left: 20px;
+            font-size: 20px;
         }
+
+        .sidebar-item {
+            padding: 10px;
+            text-align-last: center;
+            font-size: 30px;
+            margin: 50px;
+            border-bottom: 3px solid #5C5470;
+        }
+
+        .button {
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 100px;
+            margin-left: 650px;
+            cursor: pointer;
+            background-color: #5C5470;
+                }
     </style>
 </head>
 
 <body>
-    <h1><a href="/">Volunteer System</a></h1>
+    <h1><a href="/">VolonteRI</a></h1>
     <div id="sidebar">
-        <ul>
-            <li><a href="/admin">Admin login</a></li>
-            <li><a href="#">O nama</a></li>
-            <li><a href="#">Događaji</a></li>
-            <li><a href="#">Pridruži se</a></li>
-            <li><a href="#">Kontakt</a></li>
-        </ul>
+        <div class="sidebar-item"><a href="/admin">Admin login</a></div>
+        <div class="sidebar-item"><a href="/about">O nama</a></div>
+        <div class="sidebar-item"><a href="#">Projekti</a></div>
+        <div class="sidebar-item"><a href="#">Pridruži se</a></div>
+        <div class="sidebar-item"><a href="#">Kontakt</a></div>
     </div>
 
     <div>
-        <h2>Welcome to our Volunteer System</h2>
-        <p>This is the homepage content. </p>
+        <h2>Dobrodošli u sustav za organizaciju volonterskih aktivnosti!</h2>
+        <p>Naša organizacija je osnovana s ciljem poticanja pojedinaca da se aktivno uključe u volonterske aktivnosti
+            koje doprinose boljoj zajednici i svijetu uopće. <br>
+            Ovdje učimo, rastemo i zajedno gradimo mostove solidarnosti. <br>
+            Kroz suradnju s lokalnim partnerima, organiziramo raznolike projekte koji obuhvaćaju područja od obrazovanja
+            i socijalne skrbi do zaštite okoliša. <br>
+            Pridružite nam se u našem entuzijazmu i predanosti da zajedno radimo na boljem sutra!</p>
+        <button class="button">Pridruži se</button>
     </div>
 </body>
 
