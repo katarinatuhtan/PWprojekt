@@ -26,6 +26,15 @@ class ProjektiListView(ListView):
     template_name = 'projekti.html'
     context_object_name = 'projekts'
 
+    def get_queryset(self):
+        queryset = Projekt.objects.all()
+        naziv_parametar = self.request.GET.get('naziv', None)
+
+        if naziv_parametar:
+            queryset = queryset.filter(naziv__icontains=naziv_parametar)
+
+        return queryset.distinct() 
+
 class VolonterCreateView(CreateView):
     model = Volonter
     form_class = VolonterForm

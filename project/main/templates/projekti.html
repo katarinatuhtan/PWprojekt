@@ -115,20 +115,30 @@
             Svi su pozvani da se pridruže našim projektima, bilo kao volonteri, donatori ili partneri, jer vjerujemo da zajedno možemo stvoriti snažniju, podržavajuću i ljubaznu zajednicu. <br>
             Pregledajte naše projekte i pridružite nam se u ispunjavanju našeg cilja!. <br>
              </p>
-        {% block content %}
-        <br>
-        <h2> Projekti </h2>
-        <div class="projekti-container">
-            {% for projekt in projekts %}
-            <div class="projekti">
-                <h4>{{ projekt.naziv }}</h4>
-                <p>Datum početka: {{ projekt.datum_projekta }} <br>
-                Mjesto: {{ projekt.mjesto }} <br>
-                Opis: {{ projekt.opis }} </p>
-                </div>
-            {% endfor %}
-        </div>
-        {% endblock %}
+             {% block content %}
+             <br>
+             <h2> Projekti </h2>
+             <form method="get">
+                 <label for="search_naziv">Pretraži po nazivu:</label>
+                 <input type="text" name="naziv" id="search_naziv">
+                 <button type="submit">Pretraži</button>
+             </form>
+         
+             <div class="projekti-container">
+                 {% if projekts %}
+                     {% for projekt in projekts %}
+                         <div class="projekti">
+                             <h4>{{ projekt.naziv }}</h4>
+                             <p>Datum početka: {{ projekt.datum_projekta }} <br>
+                             Mjesto: {{ projekt.mjesto }} <br>
+                             Opis: {{ projekt.opis }} </p>
+                         </div>
+                     {% endfor %}
+                 {% else %}
+                     <p>Ne postoji projekt sa traženim nazivom.</p>
+                 {% endif %}
+             </div>
+         {% endblock %}
     </div>
 </body>
 
