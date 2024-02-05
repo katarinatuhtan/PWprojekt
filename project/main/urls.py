@@ -8,6 +8,7 @@ urlpatterns = [
     path('join/', views.VolonterCreateView.as_view(), name='join'),
     path('about/', views.VolonterListView.as_view(), name='about'),
     path('projects/', views.ProjektiListView.as_view(), name='projects'),
+    path('crud/', views.CrudPageView.as_view(), name='crud'),
     # path('update/', views.IceCreamUpdateView.as_view(), name='update'),
     # path('delete/', views.IceCreamDeleteView.as_view(), name='delete'),
 ]
