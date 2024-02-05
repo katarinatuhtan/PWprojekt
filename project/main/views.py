@@ -71,3 +71,21 @@ class VolonterDeleteView(DeleteView):
         context = super().get_context_data(**kwargs)
         context['main'] = self.get_object()
         return context
+
+    
+class ProjektCreateView(CreateView):
+    model = Projekt
+    form_class = ProjektForm
+    template_name = 'add_projekt.html'
+    success_url = reverse_lazy('main:projektlist')
+
+class ProjektListView(ListView):
+    model = Projekt
+    template_name ='projekti_list.html'
+    context_object_name = 'projekti'
+
+class ProjektUpdateView(UpdateView):
+    model = Projekt
+    form_class = ProjektForm
+    template_name = 'update_projekt.html'
+    success_url = reverse_lazy('main:projektlist')

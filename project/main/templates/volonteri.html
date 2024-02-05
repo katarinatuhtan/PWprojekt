@@ -122,7 +122,7 @@ VolonteRI
                     <p>Godine: {{ volonter.godine }} </p>
                     <p>Volonter prije: {{ volonter.volonter_prije }} </p>
                     <p>Projekt: {{ volonter.projekt }} </p>
-                    <h3><a href="{% url 'main:update' volonter.pk %}">Ažuriraj</a> <a href="{% url 'main:delete' volonter.pk %}">Obriši</a></h3>
+                    <h3><a href="{% url 'main:updatevolonter' volonter.pk %}">Ažuriraj</a> <a href="{% url 'main:deletevolonter' volonter.pk %}">Obriši</a></h3>
                     
                 </div>
             {% empty %}

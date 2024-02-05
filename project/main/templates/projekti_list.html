@@ -58,11 +58,17 @@
             margin: 20px;
         }
 
-        p {
-            color: black;
-            text-align: center;
+        .projekti-container {
+            display: flex;
+            justify-content:center;
+            flex-wrap: wrap; 
+        }
+        .projekti {
+            border: 1px solid #B9B4C7;
+            margin: 10px;
             padding: 10px;
-            margin-left: 20px;
+            background-color: #ffffff;
+            width: 1000px; 
             font-size: 20px;
         }
 
@@ -74,25 +80,12 @@
             border-bottom: 3px solid #5C5470;
         }
 
-        .submit {
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin-top: 100px;
-            margin-left: 600px;
-            cursor: pointer;
-            background-color: #5C5470;
-        }
-
     </style>
 </head>
 
 <body>
-    <h1>VolonteRI 
+    <h1>
+VolonteRI
         <!-- <button class="submit"><a href="/accounts/logout">Odjava</a> </button> -->
     </h1>
     <div id="sidebar">
@@ -101,16 +94,26 @@
         <div class="sidebar-item"><a href="/about">O nama</a></div>
         <div class="sidebar-item"><a href="/projects">Projekti</a></div>
         <div class="sidebar-item"><a href="/join">Pridruži se</a></div>
-
     </div>
 
     <div>
-        
-        <p>Dobrodošli u admin sučelje! <br> Ovdje možete upravljati bazom podataka.</p>
-        <h2><a href="/volonter">Upravljanje volonterima</a></h2>
-        <h2>Upravljanje skupinama</h2>
-        <h2><a href="/projekt_list">Upravljanje projektima</a> </h2>
-            
+        <h2><a href="/crud">Upravljanje</a></h2>
+        <h2>Projekti</h2>
+        <h2><a href="/addprojekt">Dodaj projekt</a> </h2>
+            {% block content %}
+        <br>
+        <div class="projekti-container">
+            {% for projekt in projekti %}
+            <div class="projekti">
+                <h4>{{ projekt.naziv }}</h4>
+                <p>Datum početka: {{ projekt.datum_projekta }} <br>
+                Mjesto: {{ projekt.mjesto }} <br>
+                Opis: {{ projekt.opis }} </p>
+                </div>
+            {% endfor %}
+        </div>
+        {% endblock %}
+        </div>
     </div>
 </body>
 
