@@ -12,9 +12,13 @@ class LandingPageView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'landing.html')
     
+class AboutPageView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'o_nama.html')
+    
 class VolonterListView(ListView):
     model = Volonter
-    template_name = 'o_nama.html'
+    template_name ='volonteri.html'
     context_object_name = 'volonters'
 
 class ProjektiListView(ListView):
@@ -26,9 +30,7 @@ class VolonterCreateView(CreateView):
     model = Volonter
     form_class = VolonterForm
     template_name = 'join.html'
-    success_url = reverse_lazy('main:add')
-
-from django.contrib.auth import authenticate, login
+    success_url = reverse_lazy('main:join')
 
 def register(request):
     if request.method == 'POST':
@@ -53,3 +55,19 @@ def register(request):
 class CrudPageView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'crud.html')
+    
+class VolonterUpdateView(UpdateView):
+    model = Volonter
+    form_class = VolonterForm
+    template_name = 'update_volonter.html'
+    success_url = reverse_lazy('main:volonter')
+
+class VolonterDeleteView(DeleteView):
+    model = Volonter
+    template_name = 'delete_volonter.html'
+    success_url = reverse_lazy('main:volonter')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['main'] = self.get_object()
+        return context

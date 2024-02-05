@@ -98,7 +98,7 @@
 </head>
 
 <body>
-    <h1><a href="">VolonteRI</a></h1>
+    <h1>VolonteRI</h1>
     <div id="sidebar">
         <div class="sidebar-item"><a href="/">Početna</a></div>
         <div class="sidebar-item"><a href="/admin">Admin login</a></div>
@@ -114,18 +114,7 @@
             Naš tim čine ljudi različitih pozadina i vještina, ali nas povezuje ista želja za doprinosom zajednici i širenjem pozitivnog utjecaja. <br>
             Svi smo ovdje jer vjerujemo da volontiranje ima moć stvaranja trajnih promjena, a zajedno gradimo mostove nade i zajedništva. <br>
              </p>
-        {% block content %}
-        <br>
-        <h2> Naši volonteri: </h2>
-        <div class="volonters-container">
-            {% for volonter in volonters %}
-            <div class="volonter">
-                <h4>{{ volonter.ime }}, {{ volonter.godine }}</h4>
-                <p>Projekt: {{ volonter.projekt }} <br> Volonter prije: {{ volonter.volonter_prije }} </p>
-            </div>
-            {% endfor %}
-        </div>
-        {% endblock %}
+        
     </div>
 </body>
 

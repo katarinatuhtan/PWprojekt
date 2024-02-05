@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projekt PW</title>
+</head>
+<body>
+    <p>Potvrdite brisanje</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Potvrdi">
+    </form>
+</body>
+</html>
