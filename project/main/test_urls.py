@@ -42,7 +42,7 @@ class TestUrls(SimpleTestCase):
         self.assertEquals(resolve(url).func.view_class, views.ProjektCreateView)
 
     def test_projektlist_url_is_resolved(self):
-        url = reverse('main:projektlist')
+        url = reverse('main:projekt')
         self.assertEquals(resolve(url).func.view_class, views.ProjektListView)
 
     def test_updateprojekt_url_is_resolved(self):
@@ -52,3 +52,31 @@ class TestUrls(SimpleTestCase):
     def test_register_url_is_resolved(self):
         url = reverse('main:register')
         self.assertEquals(resolve(url).func, views.register)
+
+    def test_projektlist_url_is_resolved(self):
+        url = reverse('main:projekt')
+        self.assertEquals(resolve(url).func.view_class, views.ProjektListView)
+
+    def test_deleteprojekt_url_is_resolved(self):
+        url = reverse('main:deleteprojekt', args=[1])  # 1 as an example PK
+        self.assertEquals(resolve(url).func.view_class, views.ProjektDeleteView)
+
+    def test_register_url_is_resolved(self):
+        url = reverse('main:register')
+        self.assertEquals(resolve(url).func, views.register)
+
+    def test_skupina_url_is_resolved(self):
+        url = reverse('main:skupina')
+        self.assertEquals(resolve(url).func.view_class, views.SkupineListView)
+
+    def test_addskupina_url_is_resolved(self):
+        url = reverse('main:addskupina')
+        self.assertEquals(resolve(url).func.view_class, views.SkupinaCreateView)
+
+    def test_updateskupina_url_is_resolved(self):
+        url = reverse('main:updateskupina', args=[1])  # 1 as an example PK
+        self.assertEquals(resolve(url).func.view_class, views.SkupinaUpdateView)
+
+    def test_deleteskupina_url_is_resolved(self):
+        url = reverse('main:deleteskupina', args=[1])  # 1 as an example PK
+        self.assertEquals(resolve(url).func.view_class, views.SkupinaDeleteView)
