@@ -20,6 +20,16 @@
             padding: 10px;
             margin: 0;
             font-size: 50px;
+            position: relative;
+        }
+
+        #authentication-info {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 16px;
         }
 
         #sidebar {
@@ -92,29 +102,34 @@
 </head>
 
 <body>
-    <h1>VolonteRI 
-        <!-- <button class="submit"><a href="/accounts/logout">Odjava</a> </button> -->
+    <h1>
+        VolonteRI
+        <div id="authentication-info">
+            {% if user.is_authenticated %}
+                <p>Prijavljeni ste kao: {{ user.username }} <br>
+                   <a href="/accounts/logout">Odjava</a> 
+                </p>
+            {% else %}
+                <p>Niste prijavljeni.</p>
+            {% endif %}
+        </div>
     </h1>
     <div id="sidebar">
         <div class="sidebar-item"><a href="/">Početna</a></div>
-        <div class="sidebar-item"><a href="/admin">Admin login</a></div>
-        <div class="sidebar-item"><a href="/register">Registriraj se</a></div>
         <div class="sidebar-item"><a href="/about">O nama</a></div>
         <div class="sidebar-item"><a href="/projects">Projekti</a></div>
         <div class="sidebar-item"><a href="/join">Pridruži se</a></div>
+        <div class="sidebar-item"><a href="/accounts/login">Admin login</a></div>
+        <div class="sidebar-item"><a href="/register">Registriraj se</a></div>
 
     </div>
 
     <div>
-        {% if user.is_authenticated %}
-            <p>Vaše ime: {{ user.username }}</p>
-        {% else %}
-            <p>Niste prijavljeni.</p>
-        {% endif %}
+        
         <p>Dobrodošli u admin sučelje! <br> Ovdje možete upravljati bazom podataka.</p>
         <h2><a href="/volonter">Upravljanje volonterima</a></h2>
-        <h2>Upravljanje skupinama</h2>
-        <h2><a href="/projektlist">Upravljanje projektima</a> </h2>
+        <h2><a href="/skupina">Upravljanje skupinama</a></h2>
+        <h2><a href="/projekt">Upravljanje projektima</a> </h2>
             
     </div>
 </body>

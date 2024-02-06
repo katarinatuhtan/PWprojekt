@@ -80,21 +80,57 @@ class VolonterDeleteView(DeleteView):
         context = super().get_context_data(**kwargs)
         context['main'] = self.get_object()
         return context
-
     
-class ProjektCreateView(CreateView):
-    model = Projekt
-    form_class = ProjektForm
-    template_name = 'add_projekt.html'
-    success_url = reverse_lazy('main:projektlist')
-
 class ProjektListView(ListView):
     model = Projekt
     template_name ='projekti_list.html'
     context_object_name = 'projekti'
 
+class ProjektCreateView(CreateView):
+    model = Projekt
+    form_class = ProjektForm
+    template_name = 'add_projekt.html'
+    success_url = reverse_lazy('main:projekt')
+
 class ProjektUpdateView(UpdateView):
     model = Projekt
     form_class = ProjektForm
     template_name = 'update_projekt.html'
-    success_url = reverse_lazy('main:projektlist')
+    success_url = reverse_lazy('main:projekt')
+
+class ProjektDeleteView(DeleteView):
+    model = Projekt
+    template_name = 'delete_projekt.html'
+    success_url = reverse_lazy('main:projekt')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['main'] = self.get_object()
+        return context
+    
+class SkupineListView(ListView):
+    model = Volonterska_skupina 
+    template_name ='skupine.html'
+    context_object_name = 'skupinas'
+
+class SkupinaCreateView(CreateView):
+    model = Volonterska_skupina
+    form_class = SkupinaForm
+    template_name = 'add_skupina.html'
+    success_url = reverse_lazy('main:skupina')
+
+class SkupinaUpdateView(UpdateView):
+    model = Volonterska_skupina
+    form_class = SkupinaForm
+    template_name = 'update_skupina.html'
+    success_url = reverse_lazy('main:skupina')
+
+class SkupinaDeleteView(DeleteView):
+    model = Volonterska_skupina
+    template_name = 'delete_skupina.html'
+    success_url = reverse_lazy('main:skupina')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['main'] = self.get_object()
+        return context

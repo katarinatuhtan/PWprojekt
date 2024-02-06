@@ -14,3 +14,13 @@ class ProjektForm(forms.ModelForm):
         widgets = {
             'datum_projekta': forms.DateInput(attrs={'type': 'date'})
         }
+
+class SkupinaForm(forms.ModelForm):
+    volonteri = forms.ModelMultipleChoiceField(
+        queryset=Volonter.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+    )
+
+    class Meta:
+        model = Volonterska_skupina
+        fields = ['naziv', 'volonteri']

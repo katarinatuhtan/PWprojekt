@@ -22,16 +22,6 @@
             font-size: 50px;
             position: relative;
         }
-
-        #authentication-info {
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            color: white;
-            font-size: 16px;
-        }
-
         p {
             color: black; 
             font-size: 18px;
@@ -75,18 +65,21 @@
             margin: 20px;
         }
 
-        .projekti-container {
+        .volonter-container {
             display: flex;
-            justify-content:center;
-            flex-wrap: wrap; 
+            flex-wrap: wrap;  
+            justify-content: space-around; 
+            align-items: flex-start;  
         }
-        .projekti {
-            border: 1px solid #B9B4C7;
+
+        .volonter-card {
+            width: 400px;  
             margin: 10px;
-            padding: 10px;
-            background-color: #ffffff;
-            width: 1000px; 
-            font-size: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
         }
 
         .sidebar-item {
@@ -97,6 +90,26 @@
             border-bottom: 3px solid #5C5470;
         }
 
+        .submit {
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 100px;
+            cursor: pointer;
+            background-color: #5C5470;
+        }
+        #authentication-info {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 16px;
+        }
     </style>
 </head>
 
@@ -124,22 +137,29 @@
 
     <div>
         <h2><a href="/crud">Upravljanje</a></h2>
-        <h2>Projekti</h2>
-        <h2><a href="/addprojekt">Dodaj projekt</a> </h2>
-            {% block content %}
-        <br>
-        <div class="projekti-container">
-            {% for projekt in projekti %}
-            <div class="projekti">
-                <h3><b>{{ projekt.naziv }}</b></h4>
-                <p><b>Datum početka:</b> {{ projekt.datum_projekta }} <br>
-                <b>Mjesto:</b> {{ projekt.mjesto }} <br>
-                <b>Opis:</b> {{ projekt.opis }} </p>
-                <h3><a href="{% url 'main:updateprojekt' projekt.pk %}">Ažuriraj</a> <a href="{% url 'main:deleteprojekt' projekt.pk %}">Obriši</a></h3>
-                </div>
-            {% endfor %}
-        </div>
-        {% endblock %}
+        <h2>Volonterske skupine</h2>
+        <h2><a href="/addskupina">Dodaj skupinu</a> </h2>
+
+        <div class="volonter-container">
+            {% if skupinas %}
+                {% for skupina in skupinas %}
+                    <div class="volonter-card">
+                        <h3>{{ skupina.naziv }}</h3>
+                        <p><b>Volonteri:</b>
+                            {% if skupina.volonteri.all %}
+                                {% for volonter in skupina.volonteri.all %}
+                                    {{ volonter.ime }} {{ volonter.prezime }}{% if not forloop.last %}, {% endif %}
+                                    
+                                {% endfor %}<h3><a href="{% url 'main:updateskupina' skupina.pk %}">Ažuriraj</a> <a href="{% url 'main:deleteskupina' skupina.pk %}">Obriši</a></h3>
+                            {% else %}
+                                Nema volontera u ovoj skupini.
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Nema skupina u bazi.</p>
+            {% endif %}
         </div>
     </div>
 </body>

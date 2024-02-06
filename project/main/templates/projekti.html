@@ -94,6 +94,33 @@
             color: #5C5470;
             margin: 0;
         }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            padding: 8px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #5C5470;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
     </style>
 </head>
 
@@ -101,11 +128,11 @@
     <h1>VolonteRI</h1>
     <div id="sidebar">
         <div class="sidebar-item"><a href="/">Početna</a></div>
-        <div class="sidebar-item"><a href="/admin">Admin login</a></div>
-        <div class="sidebar-item"><a href="/register">Registriraj se</a></div>
         <div class="sidebar-item"><a href="/about">O nama</a></div>
         <div class="sidebar-item"><a href="/projects">Projekti</a></div>
         <div class="sidebar-item"><a href="/join">Pridruži se</a></div>
+        <div class="sidebar-item"><a href="/accounts/login">Admin login</a></div>
+        <div class="sidebar-item"><a href="/register">Registriraj se</a></div>
 
     </div>
 
@@ -117,18 +144,18 @@
              </p>
              {% block content %}
              <br>
-             <h2> Projekti </h2>
+             <h2><a href="/projects">Projekti</a></h2>
              <form method="get">
-                 <label for="search_naziv">Pretraži po nazivu:</label>
-                 <input type="text" name="naziv" id="search_naziv">
-                 <button type="submit">Pretraži</button>
-             </form>
+                <label for="search_naziv">Pretraži po nazivu:</label>
+                <input type="text" name="naziv" id="search_naziv">
+                <button type="submit">Pretraži</button>
+            </form>
          
              <div class="projekti-container">
                  {% if projekts %}
                      {% for projekt in projekts %}
                          <div class="projekti">
-                             <h4>{{ projekt.naziv }}</h4>
+                             <h2>{{ projekt.naziv }}</h2>
                              <p>Datum početka: {{ projekt.datum_projekta }} <br>
                              Mjesto: {{ projekt.mjesto }} <br>
                              Opis: {{ projekt.opis }} </p>

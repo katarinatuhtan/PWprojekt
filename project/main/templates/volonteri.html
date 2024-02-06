@@ -20,8 +20,15 @@
             padding: 10px;
             margin: 0;
             font-size: 50px;
+            position: relative;
         }
-
+        p {
+            color: black; 
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify; 
+            margin: 0;  
+        }
         #sidebar {
             width: 20%;
             float: left;
@@ -95,21 +102,37 @@
             cursor: pointer;
             background-color: #5C5470;
         }
+        #authentication-info {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 16px;
+        }
     </style>
 </head>
 
 <body>
     <h1>
-VolonteRI
-        <!-- <button class="submit"><a href="/accounts/logout">Odjava</a> </button> -->
+        VolonteRI
+        <div id="authentication-info">
+            {% if user.is_authenticated %}
+                <p>Prijavljeni ste kao: {{ user.username }} <br>
+                   <a href="/accounts/logout">Odjava</a> 
+                </p>
+            {% else %}
+                <p>Niste prijavljeni.</p>
+            {% endif %}
+        </div>
     </h1>
     <div id="sidebar">
         <div class="sidebar-item"><a href="/">Početna</a></div>
-        <div class="sidebar-item"><a href="/admin">Admin login</a></div>
-        <div class="sidebar-item"><a href="/register">Registriraj se</a></div>
         <div class="sidebar-item"><a href="/about">O nama</a></div>
         <div class="sidebar-item"><a href="/projects">Projekti</a></div>
         <div class="sidebar-item"><a href="/join">Pridruži se</a></div>
+        <div class="sidebar-item"><a href="/accounts/login">Admin login</a></div>
+        <div class="sidebar-item"><a href="/register">Registriraj se</a></div>
     </div>
 
     <div>
@@ -120,9 +143,9 @@ VolonteRI
             {% for volonter in volonters %}
                 <div class="volonter-card">
                     <h3>{{ volonter.ime }} {{ volonter.prezime }} </h3>
-                    <p>Godine: {{ volonter.godine }} </p>
-                    <p>Volonter prije: {{ volonter.volonter_prije }} </p>
-                    <p>Projekt: {{ volonter.projekt }} </p>
+                    <p><b>Godine:</b> {{ volonter.godine }} </p>
+                    <p><b>Volonter prije: </b>{{ volonter.volonter_prije }} </p>
+                    <p><b>Projekt:</b> {{ volonter.projekt }} </p>
                     <h3><a href="{% url 'main:updatevolonter' volonter.pk %}">Ažuriraj</a> <a href="{% url 'main:deletevolonter' volonter.pk %}">Obriši</a></h3>
                     
                 </div>
